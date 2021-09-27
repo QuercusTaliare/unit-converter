@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Variable from "./Variable";
 import { unitsData } from '../data/units';
 import useForm from "../hooks/useForm";
