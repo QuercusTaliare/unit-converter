@@ -1,15 +1,12 @@
 import './App.css';
 import Header from './components/Header';
-import Variable from './components/Variable';
+import Variables from './components/Variables';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <div className="variable-container">
-        <Variable location="left" />
-        <Variable location="right" />
-      </div>
+      <Variables />
     </div>
   );
 }
