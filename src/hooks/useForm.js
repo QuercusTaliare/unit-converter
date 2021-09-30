@@ -33,6 +33,10 @@ export default function useForm(defaults) {
     const leftUnitShort = unitDict[newValues.leftUnit];
     const rightUnitShort = unitDict[newValues.rightUnit];
 
+    // TODO: Create limit on decimal point
+      // Create formatting when decimal point isn't needed
+
+
     if (e.target.name === "leftNumber" || e.target.name === "rightUnit") {
 
       newValues.rightNumber = convert(newValues.leftNumber).from(leftUnitShort).to(rightUnitShort);
