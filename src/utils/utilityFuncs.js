@@ -9,7 +9,7 @@ export function convertUnits(unitOneNumber, unitOne, unitTwo) {
     return parseInt(unitOneNumber) * 100000
   }
   if (unitOne === "Kilometer" && unitTwo === "Millimeter") {
-    return parseInt(unitOneNumber) * 100000
+    return parseInt(unitOneNumber) * 1000000
   }
   if (unitOne === "Meter" && unitTwo === "Kilometer") {
     return parseInt(unitOneNumber) / 1000
