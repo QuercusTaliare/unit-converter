@@ -4,11 +4,6 @@ import useForm from "../hooks/useForm";
 
 export default function Variables() {
 
-  // Need way to compare the units
-    // Create state 
-    // Create hook to compare units and convert input numbers
-      // Something needs to handle the input numbers
-
   const { values, updateValue } = useForm({
     leftUnit: unitsData[0],
     rightUnit: unitsData[0],
