@@ -1,1 +1,1 @@
-export const unitsData = ["Kilometer", "Meter", "Centimeter", "Milimeter", "Mile", "Yard", "Foot", "Inch"]
+export const unitsData = ["Kilometer", "Meter", "Centimeter", "Millimeter", "Mile", "Yard", "Foot", "Inch"]
