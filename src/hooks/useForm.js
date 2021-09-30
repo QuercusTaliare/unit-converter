@@ -1,8 +1,20 @@
 import { useState } from 'react';
-import { convertUnits } from '../utils/utilityFuncs';
+import * as convert from 'convert-units';
 
 export default function useForm(defaults) {
+
   const [values, setValues] = useState(defaults);
+
+  const unitDict = {
+    Kilometer: 'km',
+    Meter: 'm',
+    Centimeter: 'cm',
+    Millimeter: 'mm',
+    Mile: 'mi',
+    Yard: 'yd',
+    Foot: 'ft',
+    Inch: 'in'
+  }
 
   function updateValue(e) {
     // check if its a number and convert
@@ -18,16 +30,19 @@ export default function useForm(defaults) {
       [e.target.name]: value,
     }
 
+    const leftUnitShort = unitDict[newValues.leftUnit];
+    const rightUnitShort = unitDict[newValues.rightUnit];
+
     if (e.target.name === "leftNumber" || e.target.name === "rightUnit") {
-      const newRightNumber = convertUnits(newValues.leftNumber, newValues.leftUnit, newValues.rightUnit)
-      
-      newValues.rightNumber = newRightNumber;
+
+      newValues.rightNumber = convert(newValues.leftNumber).from(leftUnitShort).to(rightUnitShort);
+
     }
 
     if (e.target.name === "rightNumber" || e.target.name === "leftUnit") {
-      const newLeftNumber = convertUnits(newValues.rightNumber, newValues.leftUnit, newValues.rightUnit)
+      
+      newValues.leftNumber = convert(newValues.rightNumber).from(rightUnitShort).to(leftUnitShort);
 
-      newValues.leftNumber = newLeftNumber;
     }
 
     setValues(newValues);
