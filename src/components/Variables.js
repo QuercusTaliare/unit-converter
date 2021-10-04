@@ -1,10 +1,10 @@
 import Variable from "./Variable";
 import { unitsData } from '../data/units';
-import useForm from "../hooks/useForm";
+import useVariableForm from "../hooks/useVariableForm";
 
 export default function Variables() {
 
-  const { values, updateValue } = useForm({
+  const { varValues, updateVarValue } = useVariableForm({
     leftUnit: unitsData[0],
     rightUnit: unitsData[0],
     leftNumber: 0,
@@ -16,15 +16,15 @@ export default function Variables() {
       <div className="variable-container">
         <Variable 
           location="left" 
-          unit={values.leftUnit} 
-          number={values.leftNumber}
-          updateValue={updateValue}
+          unit={varValues.leftUnit} 
+          number={varValues.leftNumber}
+          updateValue={updateVarValue}
         />
         <Variable 
           location="right" 
-          unit={values.rightUnit} 
-          number={values.rightNumber}
-          updateValue={updateValue}
+          unit={varValues.rightUnit} 
+          number={varValues.rightNumber}
+          updateValue={updateVarValue}
         />
       </div>
     </div>
