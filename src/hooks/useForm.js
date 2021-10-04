@@ -19,7 +19,11 @@ export default function useForm(defaults) {
     Year: 'year',
     Month: 'month',
     Week: 'week',
-    Day: 'd'
+    Day: 'd',
+    Hour: 'h',
+    Minute: 'min',
+    Second: 's',
+    Millisecond: 'ms'
   }
 
   function updateValue(e) {
