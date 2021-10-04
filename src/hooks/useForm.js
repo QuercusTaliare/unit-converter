@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import * as convert from 'convert-units';
 import { roundToTwo } from '../utils/utilityFuncs';
+import { lengthsData, timesData } from '../data/units';
 
-export default function useVariableForm(defaults) {
+export default function useForm(defaults) {
 
-  const [varValues, setVarValues] = useState(defaults);
+  const [values, setValues] = useState(defaults);
 
   const unitDict = {
     Kilometer: 'km',
@@ -14,10 +15,14 @@ export default function useVariableForm(defaults) {
     Mile: 'mi',
     Yard: 'yd',
     Foot: 'ft',
-    Inch: 'in'
+    Inch: 'in',
+    Year: 'year',
+    Month: 'month',
+    Week: 'week',
+    Day: 'd'
   }
 
-  function updateVarValue(e) {
+  function updateValue(e) {
     // check if its a number and convert
     let { value } = e.target;
     if (e.target.type === 'number') {
@@ -26,7 +31,7 @@ export default function useVariableForm(defaults) {
     
     const newValues = {
       // copy the existing values into it
-      ...varValues,
+      ...values,
       // update the new value that changed
       [e.target.name]: value,
     }
@@ -50,9 +55,20 @@ export default function useVariableForm(defaults) {
 
     }
 
-    setVarValues(newValues);
+    if (e.target.name === "measurement") {
+      if (newValues.measurement === "Length") {
+        newValues.leftUnit = lengthsData[0];
+        newValues.rightUnit = lengthsData[0];
+      }
+      if (newValues.measurement === "Time") {
+        newValues.leftUnit = timesData[0];
+        newValues.rightUnit = timesData[0];
+      }
+    }
+
+    setValues(newValues);
 
   }
 
-  return { varValues, updateVarValue };
+  return { values, updateValue };
 }
