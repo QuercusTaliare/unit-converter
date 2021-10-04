@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as convert from 'convert-units';
+import { roundToTwo } from '../utils/utilityFuncs';
 
 export default function useForm(defaults) {
 
@@ -33,19 +34,19 @@ export default function useForm(defaults) {
     const leftUnitShort = unitDict[newValues.leftUnit];
     const rightUnitShort = unitDict[newValues.rightUnit];
 
-    // TODO: Create limit on decimal point
-      // Create formatting when decimal point isn't needed
-
-
     if (e.target.name === "leftNumber" || e.target.name === "rightUnit") {
 
-      newValues.rightNumber = convert(newValues.leftNumber).from(leftUnitShort).to(rightUnitShort);
+      const newRightNumber = convert(newValues.leftNumber).from(leftUnitShort).to(rightUnitShort);
+
+      newValues.rightNumber = roundToTwo(newRightNumber);
 
     }
 
     if (e.target.name === "rightNumber" || e.target.name === "leftUnit") {
-      
-      newValues.leftNumber = convert(newValues.rightNumber).from(rightUnitShort).to(leftUnitShort);
+
+      const newLeftNumber = convert(newValues.rightNumber).from(rightUnitShort).to(leftUnitShort);
+
+      newValues.leftNumber = roundToTwo(newLeftNumber);
 
     }
 

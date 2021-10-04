@@ -39,3 +39,7 @@ export function convertUnits(unitOneNumber, unitOne, unitTwo) {
     return parseInt(unitOneNumber) / 10
   }
 }
+
+export function roundToTwo(num) {
+  return +(Math.round(num + "e+2") + "e-2")
+}
