@@ -1,53 +1,61 @@
 import { lengthsData, timesData } from '../data/units';
+import { TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 
 export default function Variable({ location, unit, number, updateValue, measurement }) {
+
 
   return (
     <div className="Variable">
 
-      <pre>{JSON.stringify(number, null, 2)}</pre>
-      <pre>{JSON.stringify(unit, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(number, null, 2)}</pre>
+      <pre>{JSON.stringify(unit, null, 2)}</pre> */}
 
       <form>
         <div className="form-container">
-          <label htmlFor={`${location}Number`}>
-            <input 
-              type="text" 
-              id={`${location}Number`} 
-              name={`${location}Number`} 
-              value={number}
+          <TextField 
+            type="text"
+            id={`${location}Number`}
+            name={`${location}Number`}
+            value={number}
+            onChange={(e) => updateValue(e)} 
+            variant="outlined"
+            label="Number"
+          />
+
+          <FormControl>
+            <InputLabel id={`${location}Unit-label`}>Unit</InputLabel>
+            <Select
+              name={`${location}Unit`} 
+              id={`${location}Unit`} 
+              labelId={`${location}Unit-label`}
+              label="Unit"
+              value={unit}
               onChange={(e) => updateValue(e)}
-            />
-          </label>
-          <select 
-            name={`${location}Unit`} 
-            id={`${location}Unit`} 
-            value={unit}
-            onChange={(e) => updateValue(e)}
-          >
-            {
-              (measurement === "Length") 
-              &&
-              lengthsData.map(lengthData => {
-                return (
-                  <option value={lengthData} key={lengthData}>
-                    {lengthData}
-                  </option>
-                )
-              }) 
-            }
-            {
-              (measurement === "Time")
-              &&
-              timesData.map(timeData => {
-                return (
-                  <option value={timeData} key={timeData}>
-                    {timeData}
-                  </option>
-                )
-              })
-            }
-          </select>
+            >
+              {
+                (measurement === "Length") 
+                &&
+                lengthsData.map(lengthData => {
+                  return (
+                    <MenuItem value={lengthData} key={lengthData}>
+                      {lengthData}
+                    </MenuItem>
+                  )
+                }) 
+              }
+              {
+                (measurement === "Time")
+                &&
+                timesData.map(timeData => {
+                  return (
+                    <MenuItem value={timeData} key={timeData}>
+                      {timeData}
+                    </MenuItem>
+                  )
+                })
+              }
+            </Select>
+          </FormControl>
         </div>
       </form>
     </div>

@@ -16,6 +16,9 @@
 .Header {
   min-height: 15vh;
   background-color: dodgerblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Header h1 {
@@ -38,6 +41,8 @@
 .Variable .form-container {
   display: flex;
   flex-direction: column;
+  height: 18vh;
+  justify-content: space-between;
 }
 
 .App-link {
