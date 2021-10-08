@@ -1,6 +1,6 @@
-import { unitsData } from '../data/units';
+import { lengthsData, timesData } from '../data/units';
 
-export default function Variable({ location, unit, number, updateValue }) {
+export default function Variable({ location, unit, number, updateValue, measurement }) {
 
   return (
     <div className="Variable">
@@ -25,13 +25,28 @@ export default function Variable({ location, unit, number, updateValue }) {
             value={unit}
             onChange={(e) => updateValue(e)}
           >
-            {unitsData.map(unitData => {
-              return (
-                <option value={unitData}>
-                  {unitData}
-                </option>
-              )
-            })}
+            {
+              (measurement === "Length") 
+              &&
+              lengthsData.map(lengthData => {
+                return (
+                  <option value={lengthData} key={lengthData}>
+                    {lengthData}
+                  </option>
+                )
+              }) 
+            }
+            {
+              (measurement === "Time")
+              &&
+              timesData.map(timeData => {
+                return (
+                  <option value={timeData} key={timeData}>
+                    {timeData}
+                  </option>
+                )
+              })
+            }
           </select>
         </div>
       </form>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import * as convert from 'convert-units';
 import { roundToTwo } from '../utils/utilityFuncs';
+import { lengthsData, timesData } from '../data/units';
 
 export default function useForm(defaults) {
 
@@ -14,7 +15,15 @@ export default function useForm(defaults) {
     Mile: 'mi',
     Yard: 'yd',
     Foot: 'ft',
-    Inch: 'in'
+    Inch: 'in',
+    Year: 'year',
+    Month: 'month',
+    Week: 'week',
+    Day: 'd',
+    Hour: 'h',
+    Minute: 'min',
+    Second: 's',
+    Millisecond: 'ms'
   }
 
   function updateValue(e) {
@@ -47,6 +56,21 @@ export default function useForm(defaults) {
       const newLeftNumber = convert(newValues.rightNumber).from(rightUnitShort).to(leftUnitShort);
 
       newValues.leftNumber = roundToTwo(newLeftNumber);
+
+    }
+
+    if (e.target.name === "measurement") {
+      if (newValues.measurement === "Length") {
+        newValues.leftUnit = lengthsData[0];
+        newValues.rightUnit = lengthsData[0];
+      }
+      if (newValues.measurement === "Time") {
+        newValues.leftUnit = timesData[0];
+        newValues.rightUnit = timesData[0];
+      }
+
+      newValues.leftNumber = 0;
+      newValues.rightNumber = 0;
 
     }
 
