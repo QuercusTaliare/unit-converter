@@ -2,7 +2,7 @@ import { measurementsData } from "../data/units"
 
 export default function Measurements({ measurement, updateMeasureValue }) {
   return (
-    <div class="Measurements">
+    <div className="Measurements">
 
       <pre>{JSON.stringify(measurement, null, 2)}</pre>
 
@@ -14,7 +14,7 @@ export default function Measurements({ measurement, updateMeasureValue }) {
       >
         {measurementsData.map(measurementData => {
           return (
-            <option value={measurementData}>
+            <option value={measurementData} key={measurementData}>
               {measurementData}
             </option>
           )

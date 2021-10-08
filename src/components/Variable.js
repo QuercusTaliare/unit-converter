@@ -30,7 +30,7 @@ export default function Variable({ location, unit, number, updateValue, measurem
               &&
               lengthsData.map(lengthData => {
                 return (
-                  <option value={lengthData}>
+                  <option value={lengthData} key={lengthData}>
                     {lengthData}
                   </option>
                 )
@@ -41,7 +41,7 @@ export default function Variable({ location, unit, number, updateValue, measurem
               &&
               timesData.map(timeData => {
                 return (
-                  <option value={timeData}>
+                  <option value={timeData} key={timeData}>
                     {timeData}
                   </option>
                 )
