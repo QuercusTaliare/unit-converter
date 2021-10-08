@@ -68,6 +68,10 @@ export default function useForm(defaults) {
         newValues.leftUnit = timesData[0];
         newValues.rightUnit = timesData[0];
       }
+
+      newValues.leftNumber = 0;
+      newValues.rightNumber = 0;
+
     }
 
     setValues(newValues);
