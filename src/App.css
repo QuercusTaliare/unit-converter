@@ -6,6 +6,11 @@ body {
   text-align: center;
 }
 
+.wrapper {
+  margin: 0 auto;
+  padding: 0 2vw;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,6 +41,14 @@ body {
 .variable-container {
   display: flex;
   justify-content: space-evenly;
+}
+
+.Variable:nth-child(odd) {
+  margin-right: 2vw;
+}
+
+.Variable:nth-child(even) {
+  margin-left: 2vw;
 }
 
 .Variable {
