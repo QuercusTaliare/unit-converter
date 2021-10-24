@@ -15,8 +15,6 @@ export default function Measurements({ measurement, updateMeasureValue }) {
   return (
     <div className="Measurements">
 
-      {/* <pre>{JSON.stringify(measurement, null, 2)}</pre> */}
-
       <FormControl>
         <InputLabel id="measurement-label">Measurement</InputLabel>
         <Select

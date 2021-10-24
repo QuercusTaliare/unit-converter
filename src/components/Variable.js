@@ -7,9 +7,6 @@ export default function Variable({ location, unit, number, updateValue, measurem
   return (
     <div className="Variable">
 
-      {/* <pre>{JSON.stringify(number, null, 2)}</pre>
-      <pre>{JSON.stringify(unit, null, 2)}</pre> */}
-
       <form>
         <div className="form-container">
           <TextField 
