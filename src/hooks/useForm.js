@@ -49,6 +49,10 @@ export default function useForm(defaults) {
 
       newValues.rightNumber = roundToTwo(newRightNumber);
 
+      if (isNaN(newValues.rightNumber)) {
+        newValues.rightNumber = 0;
+      }
+
     }
 
     if (e.target.name === "rightNumber" || e.target.name === "leftUnit") {
@@ -56,6 +60,10 @@ export default function useForm(defaults) {
       const newLeftNumber = convert(newValues.rightNumber).from(rightUnitShort).to(leftUnitShort);
 
       newValues.leftNumber = roundToTwo(newLeftNumber);
+
+      if (isNaN(newValues.leftNumber)) {
+        newValues.leftNumber = 0;
+      }
 
     }
 
